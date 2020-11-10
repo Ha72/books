@@ -3,4 +3,8 @@ class Genre < ApplicationRecord
     
     validates :genre, presence: true
     validates :genre, uniqueness: true
+    
+    def name
+        return genre
+    end
 end
