@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+    belongs_to :genre
     has_many :order_books
     has_many :orders, through: :order_books
     
