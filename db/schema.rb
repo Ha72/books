@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_001745) do
+ActiveRecord::Schema.define(version: 2020_11_10_002254) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(version: 2020_11_10_001745) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "genre_id", null: false
     t.index ["genre_id"], name: "index_books_on_genre_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "username"
+    t.text "password"
+    t.string "name"
+    t.string "phone"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "province_id", null: false
+    t.index ["province_id"], name: "index_customers_on_province_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -40,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_11_10_001745) do
   end
 
   add_foreign_key "books", "genres"
+  add_foreign_key "customers", "provinces"
 end
