@@ -5,4 +5,6 @@ class Book < ApplicationRecord
     
     validates :title, :author, :price, :stock_quantity, :status, presence: true
     validates :stock_quantity, numericality: true
+    
+    has_one_attached :image
 end
