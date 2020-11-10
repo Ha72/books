@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Books</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>
+      <% if content_for?(:html_title) %>
+        <%= yield(:html_title)  %>
+      <% else %>
+        Books
+      <% end %>
+    </title>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-1"><%= link_to "Books", root_path %></h1>
+        <%= yield %>
+      </div>
+    </section>
+    
   </body>
 </html>
