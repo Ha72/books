@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_date: 2020-11-09 18:33:25
+  subtotal: 9.99
+  gst: 9.99
+  pst: 9.99
+  total: 9.99
+
+two:
+  order_date: 2020-11-09 18:33:25
+  subtotal: 9.99
+  gst: 9.99
+  pst: 9.99
+  total: 9.99
