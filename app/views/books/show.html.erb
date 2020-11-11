@@ -1,2 +1,47 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<% content_for(:html_title) { @book.title } %>
+
+<h3 class="title is-3"><%= @book.title %></h3>
+
+<div class="columns mt-6 is-centered">
+
+    <% if @book.image.present? %> 
+        <div class="column is-one-third">
+            <figure class="image">
+                <%= image_tag @book.image %>
+            </figure> 
+        </div>
+    <% end %>
+    
+    <div class="column ml-6">
+        
+        <p class="mb-5">
+            <strong>Author: </strong>
+            <%= @book.author %>
+        </p>
+        
+        <p class="mb-5">
+            <strong>Genre: </strong>
+            <%= link_to @book.genre.genre, @book.genre %>
+        </p>
+        
+        <p class="mb-3">
+            <strong>Description: </strong>
+        </p>
+        
+        <p class="mb-5">
+            <%= @book.description %>
+        </p>
+        
+        <p class="mb-5">
+            <strong>Price: </strong>
+            <%= ActiveSupport::NumberHelper.number_to_currency(@book.price) %>
+        </p>
+        
+        <p class="mb-5 is-italic">
+            <strong>Tag: </strong>
+            <%= @book.status %>
+        </p>
+    
+    </div>
+
+</div>

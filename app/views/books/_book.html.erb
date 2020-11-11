@@ -1,24 +1,24 @@
 <div class="column is-4 mt-6">
-    <div class="card">
+    <div class="card has-text-centered">
         <div class="card-content">
-        <p class="title is-6 has-text-centered">
-            <%= link_to book.title, book %>
-        </p>
+            <p class="title is-6">
+                <%= link_to book.title, book %>
+            </p>
 
-        <% if book.image.present? %>
-            <div class="ml-5">
-                <figure class="image">
-                    <%= image_tag book.image %>
-                </figure> 
-            </div>
-        <% end %>
+            <% if book.image.present? %>
+                <div>
+                    <figure class="image">
+                        <%= image_tag book.image %>
+                    </figure> 
+                </div>
+            <% end %>
 
-        <p class="mt-5 has-text-centered">
-            by <strong><%= book.author %></strong>
-        </p>
-        <p class="mt-2 has-text-centered">
-            at <%= ActiveSupport::NumberHelper.number_to_currency(book.price) %>
-        </p>
-    </div>
+            <p class="mt-5">
+                by <strong><%= book.author %></strong>
+            </p>
+            <p class="mt-2">
+                at <%= ActiveSupport::NumberHelper.number_to_currency(book.price) %>
+            </p>
+        </div>
     </div>
 </div>

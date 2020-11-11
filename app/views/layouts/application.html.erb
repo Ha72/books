@@ -8,7 +8,7 @@
       <% if content_for?(:html_title) %>
         <%= yield(:html_title)  %>
       <% else %>
-        Books
+        Ruby Bookstore
       <% end %>
     </title>
     
@@ -21,10 +21,11 @@
   </head>
 
   <body>
+    <%= render partial: 'shared/nav' %>
     
     <section class="section">
       <div class="container">
-        <h1 class="title is-1"><%= link_to "Books", root_path %></h1>
+        <h1 class="title is-1"><%= link_to "Ruby Bookstore", root_path %></h1>
         <%= yield %>
       </div>
     </section>

@@ -1,0 +1,7 @@
+<h3 class="title is-3">Available Genres:</h3>
+
+<ol class="ml-5">
+    <% @genres.each do |g| %>
+        <li><%= link_to g.genre, g %></li>
+    <% end %>
+</ol>
