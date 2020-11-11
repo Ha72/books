@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   
   root to: "books#index"
   
-  resources :books, only: %i[index show]
+  resources :books, only: %i[index show] do
+      collection do
+          get "search"
+      end
+  end
   
   get "/books_new", to: "books#new"
   

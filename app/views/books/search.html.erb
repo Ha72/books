@@ -1,0 +1,22 @@
+<% content_for(:html_title) { "Search Results" } %>
+
+<h2 class="title is-3">Search Results</h2>
+
+<p class="mb-5">
+    Found <%= pluralize @search_books.count, "result" %> for <strong><em>"<%= params[:keyword] %>"</em></strong> in <strong><%= @genre_search %></strong>.
+</p>
+
+<div class="columns is-multiline is-centered is-variable is-8">
+    <% @paginated_books.each do |book| %>
+        <%= render partial: 'book', object: book %>
+    <% end %>
+</div>
+
+<div class="mt-5 mb-6 columns">
+    <div class="column">
+    </div>
+    
+    <div class="column is-one-quarter">
+        <%= paginate @paginated_books %>
+    </div>
+</div>
