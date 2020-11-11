@@ -2,7 +2,7 @@
 
 <p class="is-size-6 is-italic">
     Tags: <%= link_to "new", books_new_path %>, 
-    on sale, 
+    <strong>on sale</strong>, 
     <%= link_to "recently updated", books_recentlyupdated_path %>
 </p>
 
@@ -10,4 +10,13 @@
     <% @sale_books.each do |book| %>
         <%= render partial: 'book', object: book %>
     <% end %>
+</div>
+
+<div class="mt-5 mb-6 columns">
+    <div class="column">
+    </div>
+    
+    <div class="column is-one-quarter">
+        <%= paginate @sale_books %>
+    </div>
 </div>

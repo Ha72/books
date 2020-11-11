@@ -56,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Add gem to books project
 gem 'activeadmin' # Admin Dashboard
 gem 'devise'      # Username and password authentication
+gem 'kaminari'    # Pagination
+

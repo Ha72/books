@@ -1,7 +1,7 @@
 <h3 class="title is-3">New Books</h3>
 
 <p class="is-size-6 is-italic">
-    Tags: new, 
+    Tags: <strong>new</strong>, 
     <%= link_to "on sale", books_onsale_path %>, 
     <%= link_to "recently updated", books_recentlyupdated_path %>
 </p>
@@ -10,4 +10,13 @@
     <% @new_books.each do |book| %>
         <%= render partial: 'book', object: book %>
     <% end %>
+</div>
+
+<div class="mt-5 mb-6 columns">
+    <div class="column">
+    </div>
+    
+    <div class="column is-one-quarter">
+        <%= paginate @new_books %>
+    </div>
 </div>

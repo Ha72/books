@@ -11,3 +11,12 @@
         <%= render partial: 'book', object: book %>
     <% end %>
 </div>
+
+<div class="mt-5 mb-6 columns">
+    <div class="column">
+    </div>
+    
+    <div class="column is-one-quarter">
+        <%= paginate @books %>
+    </div>
+</div>
