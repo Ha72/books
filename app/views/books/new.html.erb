@@ -1,13 +1,13 @@
-<h3 class="title is-3">Available Books</h3>
+<h3 class="title is-3">New Books</h3>
 
 <p class="is-size-6 is-italic">
-    Tags: <%= link_to "new", books_new_path %>, 
+    Tags: new, 
     <%= link_to "on sale", books_onsale_path %>, 
     <%= link_to "recently updated", books_recentlyupdated_path %>
 </p>
 
 <div class="columns is-multiline is-centered is-variable is-8">
-    <% @books.each do |book| %>
+    <% @new_books.each do |book| %>
         <%= render partial: 'book', object: book %>
     <% end %>
 </div>

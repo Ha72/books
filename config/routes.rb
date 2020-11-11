@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   
   resources :books, only: %i[index show]
   
+  get "/books_new", to: "books#new"
+  
+  get "/books_onsale", to: "books#on_sale"
+  
+  get "/books_recentlyupdated", to: "books#recently_updated"
+  
   resources :genres, only: %i[index show]
   
 end
