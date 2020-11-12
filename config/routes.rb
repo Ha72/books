@@ -19,4 +19,8 @@ Rails.application.routes.draw do
   
   resources :genres, only: %i[index show]
   
+  get "/about", to: "pages#about"
+  
+  get "/contact", to: "pages#contact"
+  
 end
