@@ -37,9 +37,14 @@
             <%= ActiveSupport::NumberHelper.number_to_currency(@book.price) %>
         </p>
         
-        <p class="mb-5 is-italic">
-            <strong>Tag: </strong>
-            <%= @book.status %>
+        <p class="mb-5">
+            <strong>Created At: </strong>
+            <%= @book.created_at.strftime("%B %d, %Y") %>
+        </p>
+        
+        <p class="mb-5">
+            <strong>Updated At: </strong>
+            <%= @book.updated_at.strftime("%B %d, %Y") %>
         </p>
     
     </div>
