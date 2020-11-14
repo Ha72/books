@@ -9,12 +9,12 @@ class BooksController < ApplicationController
   
   def new
     @new_books = Book.where("created_at >= ?", Time.new - 3*24*60*60)
-                    .page(params[:page]).per(3)
+                    .page(params[:page]).per(6)
   end
   
   def on_sale
     @sale_books = Book.where(status: "on sale")
-                    .page(params[:page]).per(3)
+                    .page(params[:page]).per(6)
   end
   
   def recently_updated
@@ -34,6 +34,6 @@ class BooksController < ApplicationController
         @search_books = @search_books.where(genre_id: genre_id)
       end
       
-      @paginated_books = @search_books.page(params[:page]).per(3)
+      @paginated_books = @search_books.page(params[:page]).per(6)
   end
 end

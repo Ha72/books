@@ -6,7 +6,7 @@
     Found <%= pluralize @search_books.count, "result" %> for <strong><em>"<%= params[:keyword] %>"</em></strong> in <strong><%= @genre_search %></strong>.
 </p>
 
-<div class="columns is-multiline is-centered is-variable is-8">
+<div class="columns is-mobile is-multiline is-centered is-variable is-8">
     <% @paginated_books.each do |book| %>
         <%= render partial: 'book', object: book %>
     <% end %>

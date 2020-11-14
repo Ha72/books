@@ -6,7 +6,7 @@
     <%= link_to "recently updated", books_recentlyupdated_path %>
 </p>
 
-<div class="columns is-multiline is-centered is-variable is-8">
+<div class="columns is-mobile is-multiline is-centered is-variable is-8">
     <% @books.each do |book| %>
         <%= render partial: 'book', object: book %>
     <% end %>
