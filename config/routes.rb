@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   
   get "/contact", to: "pages#contact"
   
+  resources :cart, only: %i[create destroy]
+  
 end
