@@ -22,13 +22,18 @@
                     at <%= ActiveSupport::NumberHelper.number_to_currency(book.price) %>
                 </p>
                 
-                <%= form_with url: cart_index_path, method: :post do %>
-                    <%= hidden_field_tag(:id, book.id) %>
-                    <%= select_tag(:qty, options_for_select([[0,0],[1,1],[2,2],[3,3],[4,4],[5,5]],0)) %>
+                
                     
-                    <% if cart.include?(book) %>
-                        <%= button_tag 'Update' %>
-                    <% else %>
+                    
+                <% if cart.include?(book) %>
+                    
+                    <%= button_to cart_path(book), method: :delete do %>
+                        Remove
+                    <% end %>
+                <% else %>
+                    <%= form_with url: cart_index_path, method: :post do %>
+                        <%= hidden_field_tag(:id, book.id) %>
+                        <%= select_tag(:qty, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]], 1)) %>
                         <%= button_tag 'Add to Cart' %>
                     <% end %>
                 <% end %>

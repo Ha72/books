@@ -7,17 +7,12 @@ class CartController < ApplicationController
         cart_books = session[:cart].map { |c| c[0] }
         
         if cart_books.include?(id)
-            if qty > 0
-                session[:cart][cart_books.index(id)] = [id, qty]
-            else
-                session[:cart].delete_at(cart_books.index(id))
-            end
-            
+            session[:cart][cart_books.index(id)] = [id, qty]
         else
-            if qty > 0
-                session[:cart] << [id, qty]
-            end
+            session[:cart] << [id, qty]
         end
+        
+        # @cart_qty = session[:cart][cart_books.index(id)][1].to_i
         
         redirect_to root_path
         
@@ -28,8 +23,12 @@ class CartController < ApplicationController
     # DELETE /cart/:id, Remove book from the cart
     def destroy
         id = params[:id].to_i
-        session[:cart].delete(id)
+        cart_books = session[:cart].map { |c| c[0] }
         
-        logger.debug("Cart Destroy triggered")
+        session[:cart].delete_at(cart_books.index(id))
+        
+        redirect_to root_path
+        
+        # logger.debug("Cart Destroy triggered")
     end
 end
