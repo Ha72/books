@@ -48,6 +48,21 @@
       <% end %>
 
     </div>
+    
+    <div class="navbar-item">
+      <div class="button is-danger is-light">
+        <%= link_to '🛒', root_path %>
+        <ul>
+          <li>
+            <% if cart.present? %>
+              <sup><%= cart.size %></sup>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    
   </div>
   
 </nav>

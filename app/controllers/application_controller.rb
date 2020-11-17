@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :get_genres
     before_action :initialize_session
+    helper_method :cart
     
     private
     
@@ -10,6 +11,10 @@ class ApplicationController < ActionController::Base
         Genre.all.each do |g|
             @nav_genres.push(g.genre)
         end
+    end
+    
+    def cart
+        Book.find(session[:cart])
     end
     
     def initialize_session
