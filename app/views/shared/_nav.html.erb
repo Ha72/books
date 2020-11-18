@@ -51,11 +51,11 @@
     
     <div class="navbar-item">
       <div class="button is-danger is-light">
-        <%= link_to '🛒', root_path %>
+        <%= link_to '🛒', shopping_cart_path %>
         <ul>
           <li>
-            <% if cart.present? %>
-              <sup><%= cart.size %></sup>
+            <% if @cart_books.present? %>
+              <sup><%= @size %></sup>
             <% end %>
           </li>
         </ul>

@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   
   resources :cart, only: %i[create destroy]
   
+  get "/shopping_cart", to: "cart#index"
+  
 end

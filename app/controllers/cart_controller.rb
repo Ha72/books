@@ -14,7 +14,7 @@ class CartController < ApplicationController
         
         # @cart_qty = session[:cart][cart_books.index(id)][1].to_i
         
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
         
         # logger.debug("Cart Create triggered")
         # logger.debug("Adding book id #{params[:id]}")
@@ -27,8 +27,16 @@ class CartController < ApplicationController
         
         session[:cart].delete_at(cart_books.index(id))
         
-        redirect_to root_path
+        redirect_back(fallback_location: root_path)
         
         # logger.debug("Cart Destroy triggered")
+    end
+    
+    def index
+        @cart = []
+        session[:cart].each do |c|
+            book = Book.find(c[0])
+            @cart << [book, c[1]]
+        end
     end
 end

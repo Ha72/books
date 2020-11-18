@@ -1,0 +1,47 @@
+<% content_for(:html_title) { "Shopping Cart" } %>
+
+<h3 class="title is-3">Shopping Cart</h3>
+
+<div class="mt-6">
+    <% if @size == 0 %>
+        <p>Your shopping cart is empty.</p>
+    <% else %>
+        
+        <% @cart.each do |c| %>
+            <div class="card mt-2">
+                <div class="columns is-variable">
+                    <div class="column mt-5 mb-5 ml-5">
+                        <p class="title is-5">
+                            <%= link_to c[0].title, c[0] %>
+                        </p>
+                                
+                        <div class="field is-grouped">
+                            <%= form_with url: cart_index_path, method: :post do %>
+                                <%= hidden_field_tag(:id, c[0].id) %>
+                                
+                                <div class="control select is-info mr-1">
+                                    <%= select_tag(:qty, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]], c[1])) %>
+                                </div>
+                                
+                                <%= button_tag 'Update', class: "button is-info is-light mr-5" %>
+                            <% end %>
+                            
+                            <%= button_to cart_path(c[0]), method: :delete, class: "button is-warning is-light" do %>
+                                Remove
+                            <% end %>
+                        
+                        </div>
+                    </div>
+                
+                    <div class="column is-3 mt-5 mb-5 ml-5 mr-5 has-text-right">
+                        <p>
+                            <%= ActiveSupport::NumberHelper.number_to_currency(c[0].price) %>
+                        </p>
+                                
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        
+    <% end %>
+</div>

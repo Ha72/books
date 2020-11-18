@@ -21,22 +21,22 @@
                 <p class="mt-2">
                     at <%= ActiveSupport::NumberHelper.number_to_currency(book.price) %>
                 </p>
-                
-                
                     
-                    
-                <% if cart.include?(book) %>
-                    
-                    <%= button_to cart_path(book), method: :delete do %>
-                        Remove
+                <div class="mt-6 mb-3">
+                    <% if @cart_books.include?(book) %>
+                        <%= button_to cart_path(book), method: :delete, class: "button is-small is-info is-light" do %>
+                            Remove
+                        <% end %>
+                    <% else %>
+                        <%= form_with url: cart_index_path, method: :post do %>
+                            <%= hidden_field_tag(:id, book.id) %>
+                            <div class="control select is-small is-info mr-1">
+                                <%= select_tag(:qty, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]], 1)) %>
+                            </div>
+                            <%= button_tag 'Add to Cart', class: "button is-small is-info is-light" %>
+                        <% end %>
                     <% end %>
-                <% else %>
-                    <%= form_with url: cart_index_path, method: :post do %>
-                        <%= hidden_field_tag(:id, book.id) %>
-                        <%= select_tag(:qty, options_for_select([[1,1],[2,2],[3,3],[4,4],[5,5]], 1)) %>
-                        <%= button_tag 'Add to Cart' %>
-                    <% end %>
-                <% end %>
+                </div>
                 
             </div>
         </div>

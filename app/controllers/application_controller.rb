@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :get_genres
     before_action :initialize_session
-    helper_method :cart
+    before_action :cart
     
     private
     
@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
     end
     
     def cart
-        Book.find(session[:cart])
+        books = session[:cart].map { |c| c[0] }
+        @cart_books = Book.find(books)
+        
+        @size = 0
+        session[:cart].each do |c|
+            @size += c[1]
+        end
     end
     
     def initialize_session
