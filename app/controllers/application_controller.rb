@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     before_action :get_genres
     before_action :initialize_session
     before_action :cart
+    before_action :configure_permitted_parameters, if: :devise_controller?
     
     private
     
@@ -25,6 +26,15 @@ class ApplicationController < ActionController::Base
     
     def initialize_session
         session[:cart] ||= [] # Cart defaults to an empty array
+    end
+    
+    
+    
+    protected
+    
+    def configure_permitted_parameters
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :address, :city])
+        # devise_parameter_sanitizer.permit(:account_update, keys: [:username])
     end
     
 end

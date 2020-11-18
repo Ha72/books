@@ -6,6 +6,7 @@
     <% if @size == 0 %>
         <p>Your shopping cart is empty.</p>
     <% else %>
+        <p class="mb-6">Your shopping cart has <%= pluralize @size, "item" %>:</p>
         
         <% @cart.each do |c| %>
             <div class="card mt-2">
@@ -42,6 +43,22 @@
                 </div>
             </div>
         <% end %>
+        
+        <div class="mt-6 has-text-right mr-5">
+            <p>
+                <strong class="mr-6">Subtotal: </strong>
+                <%= ActiveSupport::NumberHelper.number_to_currency(@subtotal) %>
+            </p>
+            <% if customer_signed_in? %>
+                <div class="mt-5 mb-6">
+                  <%= link_to 'Proceed to Checkout', root_path %>
+                </div>
+            <% else %>
+                <div class="mt-5 mb-6">
+                  <%= link_to 'Log in to proceed to checkout', new_customer_session_path %>
+                </div>
+            <% end %>
+        </div>
         
     <% end %>
 </div>

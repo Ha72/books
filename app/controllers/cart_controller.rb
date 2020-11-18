@@ -34,9 +34,13 @@ class CartController < ApplicationController
     
     def index
         @cart = []
+        @subtotal = 0
+        
         session[:cart].each do |c|
             book = Book.find(c[0])
             @cart << [book, c[1]]
+            
+            @subtotal += book.price * c[1]
         end
     end
 end
