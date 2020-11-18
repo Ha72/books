@@ -53,12 +53,17 @@
                 <div class="mt-5 mb-6">
                   <%= link_to 'Proceed to Checkout', root_path %>
                 </div>
+                <div class="has-text-left">
+                    <%= link_to "🐶 Update your address", edit_customer_registration_path %>
+                </div>
             <% else %>
                 <div class="mt-5 mb-6">
                   <%= link_to 'Log in to proceed to checkout', new_customer_session_path %>
                 </div>
             <% end %>
         </div>
+        
+        
         
     <% end %>
 </div>
