@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     before_action :initialize_session
     before_action :cart
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :get_provinces
     
     private
     
@@ -28,13 +29,17 @@ class ApplicationController < ActionController::Base
         session[:cart] ||= [] # Cart defaults to an empty array
     end
     
+    def get_provinces
+        @provinces = Province.all
+    end
+    
     
     
     protected
     
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :address, :city])
-        # devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :address, :city, :province_id])
+        devise_parameter_sanitizer.permit(:account_update, keys: [:username, :address, :city, :province_id])
     end
     
 end
