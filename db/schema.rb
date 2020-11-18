@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_204047) do
+ActiveRecord::Schema.define(version: 2020_11_18_014504) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -73,15 +73,15 @@ ActiveRecord::Schema.define(version: 2020_11_10_204047) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "username"
-    t.text "password"
-    t.string "name"
-    t.string "phone"
-    t.text "address"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "province_id", null: false
-    t.index ["province_id"], name: "index_customers_on_province_id"
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -109,8 +109,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_204047) do
     t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -130,8 +128,6 @@ ActiveRecord::Schema.define(version: 2020_11_10_204047) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "genres"
-  add_foreign_key "customers", "provinces"
   add_foreign_key "order_books", "books"
   add_foreign_key "order_books", "orders"
-  add_foreign_key "orders", "customers"
 end

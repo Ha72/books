@@ -1,7 +1,6 @@
 class Customer < ApplicationRecord
-    belongs_to :province
-    has_many :orders
-    
-    validates :username, :password, presence: true
-    validates :username, uniqueness: true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 end
