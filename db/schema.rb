@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_171510) do
+ActiveRecord::Schema.define(version: 2020_11_18_185241) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -83,7 +83,9 @@ ActiveRecord::Schema.define(version: 2020_11_18_171510) do
     t.string "username"
     t.text "address"
     t.string "city"
+    t.integer "province_id", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["province_id"], name: "index_customers_on_province_id"
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_171510) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "genres"
+  add_foreign_key "customers", "provinces"
   add_foreign_key "order_books", "books"
   add_foreign_key "order_books", "orders"
 end
