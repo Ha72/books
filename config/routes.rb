@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   
   get "/contact", to: "pages#contact"
   
+  get "/manage_account", to: "pages#manage"
+  
   resources :cart, only: %i[create destroy]
   
   get "/shopping_cart", to: "cart#index"
+  
   
 end
