@@ -32,8 +32,6 @@ Rails.application.routes.draw do
   
   get "/review_order", to: "cart#review"
   
-  get "/save_order", to: "cart#save"
-  
   resources :orders, only: %i[index show create]
   
   

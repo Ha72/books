@@ -40,11 +40,10 @@ class OrdersController < ApplicationController
                                 price: c[0].price
                             )
             end
-            
         end
         
         session[:cart] = []
         
-        redirect_to save_order_path
+        redirect_to review_order_path
     end
 end

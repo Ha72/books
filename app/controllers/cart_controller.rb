@@ -47,10 +47,11 @@ class CartController < ApplicationController
     end
     
     def review
+        current_order = Order.last
+        @current_order_size = 0
         
-    end
-    
-    def save
-        
+        current_order.order_books.each do |o|
+            @current_order_size += o.quantity
+        end
     end
 end
