@@ -6,4 +6,8 @@ class PagesController < ApplicationController
   def contact
     @contact = Page.find_by(title: "Contact Us")
   end
+  
+  def manage
+    
+  end
 end

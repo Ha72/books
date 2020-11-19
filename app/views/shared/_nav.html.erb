@@ -68,9 +68,6 @@
           <%= link_to 'Sign out', destroy_customer_session_path, method: :delete %>
         </div>
       <% else %>
-        <div class="button is-warning is-light mr-2">
-          <%= link_to 'Sign up', new_customer_registration_path %>
-        </div>
         <div class="button is-warning is-light">
           <%= link_to 'Log in', new_customer_session_path %>
         </div>

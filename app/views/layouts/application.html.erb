@@ -27,6 +27,16 @@
       <div class="container">
         <h1 class="title is-1"><%= link_to "Ruby Bookstore", root_path %></h1>
         <%= yield %>
+        
+        <div class="mt-6 mb-6">
+          <% if customer_signed_in? %>
+            <p>🐶 Hi, <strong><%= current_customer.username %></strong>!</p>
+            <p>
+              <%= link_to "👉 Manage your account", edit_customer_registration_path %>
+            </p>
+          <% end %>
+        </div>
+        
       </div>
     </section>
     
