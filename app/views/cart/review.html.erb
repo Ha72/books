@@ -6,23 +6,28 @@
     <p class="mt-6">Your order has <%= pluralize @size, "item" %>:</p>
     
     <div class="mt-5 mb-6">
-        <% @cart.each do |c| %>
-            <div class="columns is-variable ml-6">
-                <div class="column ml-6">
-                    <p>
-                        <%= c[1] %> x 
-                        <%= link_to c[0].title, c[0] %>
-                    </p>
+        
+            <% @cart.each do |c| %>
+                <div class="columns is-variable ml-6">
+                    <div class="column ml-6">
+                        <p>
+                            <%= c[1] %> x 
+                            <%= link_to c[0].title, c[0] %>
+                        </p>
+                    </div>
+                    
+                    <div class="column is-4">
+                        <p>
+                            <%= ActiveSupport::NumberHelper.number_to_currency(c[0].price) %> each
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="column is-4">
-                    <p>
-                        <%= ActiveSupport::NumberHelper.number_to_currency(c[0].price) %> each
-                    </p>
-                </div>
-            </div>
+            <% end %>
+        
             
-        <% end %>
+            
     </div>
+                        
     
 </div>

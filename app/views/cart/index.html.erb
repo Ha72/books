@@ -64,7 +64,9 @@
                 </p>
                 
                 <div class="mt-5 mb-6">
-                  <%= link_to 'Review Order', review_order_path %>
+                  <%= form_with url: orders_path, method: :post do %>
+                <%= button_tag 'Add to Cart', class: "button is-small is-info is-light" %>
+            <% end %>
                 </div>
                 
             <% else %>
