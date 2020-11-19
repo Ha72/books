@@ -1,4 +1,6 @@
 class CartController < ApplicationController
+    include Devise::Controllers::Helpers
+    
     # POST /cart, Add params[:id] book to the cart
     def create
         id = params[:id].to_i
@@ -42,5 +44,25 @@ class CartController < ApplicationController
             
             @subtotal += book.price * c[1]
         end
+    end
+    
+    def review
+        @cart = []
+        @subtotal = 0
+        
+        session[:cart].each do |c|
+            book = Book.find(c[0])
+            @cart << [book, c[1]]
+            
+            @subtotal += book.price * c[1]
+        end
+        
+        @gst = @subtotal * current_customer.province.gst / 100
+        @pst = @subtotal * current_customer.province.pst / 100
+        @total = @subtotal + @gst + @pst
+    end
+    
+    def save
+        
     end
 end

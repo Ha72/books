@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   
   get "/shopping_cart", to: "cart#index"
   
+  get "/review_order", to: "cart#review"
+  
   resources :orders, only: %i[index show]
   
   
