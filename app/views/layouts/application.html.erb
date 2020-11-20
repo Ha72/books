@@ -30,9 +30,8 @@
         
         <div class="mt-6 mb-6">
           <% if customer_signed_in? %>
-            <p>🐶 Hi, <strong><%= current_customer.username %></strong>!</p>
             <p>
-              <%= link_to "👉 Manage your account", manage_account_path %>
+              <%= link_to "🐶 Manage your account", manage_account_path %>
             </p>
           <% end %>
         </div>

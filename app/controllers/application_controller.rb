@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
     
     def get_provinces
-        @provinces = Province.all
+        @provs = Province.all
     end
     
     
