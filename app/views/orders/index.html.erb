@@ -12,46 +12,45 @@
             <div class="card mt-6">
                 <div class="columns is-mobile is-variable is-size-7 has-background-info-light">
                         
-                    <div class="column is-5 mt-5 ml-4">
+                    <div class="column mt-4 ml-4">
                         <p>ORDER CREATED:</p>
                         <p><%= o.created_at.strftime("%B %d, %Y") %></p>
                     </div>
-                    <div class="column is-4 mt-5">
+                    <div class="column mt-4 mr-5 has-text-right">
                         <p>STATUS:</p>
                         <p><%= o.status %></p>
                     </div>
-                    <div class="column mt-4 mr-5 has-text-right">
-                        <p><span class="has-text-right mr-5">Subtotal: </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.subtotal) %></p>
-                        <p><span class="has-text-right mr-5">GST/HST(<%= ActiveSupport::NumberHelper.number_to_percentage(o.gst/o.subtotal*100, precision: 0) %>): </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.gst, precision: 2) %></p>
-                        <p><span class="has-text-right mr-5">PST(<%= ActiveSupport::NumberHelper.number_to_percentage(o.pst/o.subtotal*100, precision: 0) %>): </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.pst, precision: 2) %></p>
-                        <p><span class="has-text-right mr-5">Total:</span> <%= ActiveSupport::NumberHelper.number_to_currency(o.total) %></p>
+                    
+                </div>
+                
+                <div class="columns is-mobile is-variable">
+                    <div class="column is-8 mt-3 ml-4">
+                        <% o.order_books.each do |b| %>
+                            <div class="columns is-mobile is-variable">
+                                <div class="column is-6 ml-4">
+                                    <p><%= link_to b.book.title, b.book %></p>
+                                </div>
+                                <div class="column is-size-7">
+                                    <p>x <%= b.quantity %></p>
+                                </div>
+                                <div class="column mr-4 is-size-7">
+                                    <p><%= ActiveSupport::NumberHelper.number_to_currency(b.price) %></p>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                        
+                    <div class="column has-text-right mt-2 mr-5 mb-5">
+                        <p><span class="mr-5">Subtotal: </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.subtotal) %></p>
+                        <p><span class="mr-5">GST/HST(<%= ActiveSupport::NumberHelper.number_to_percentage(o.gst/o.subtotal*100, precision: 0) %>): </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.gst, precision: 2) %></p>
+                        <p><span class="mr-5">PST(<%= ActiveSupport::NumberHelper.number_to_percentage(o.pst/o.subtotal*100, precision: 0) %>): </span> <%= ActiveSupport::NumberHelper.number_to_currency(o.pst, precision: 2) %></p>
+                        <p><span class="mr-5">Total:</span> <%= ActiveSupport::NumberHelper.number_to_currency(o.total) %></p>
                     </div>
                 </div>
                 
-                
-                <div class="card-content">
-                    <% o.order_books.each do |b| %>
-                        <div class="columns is-mobile is-variable">
-                        
-                            <div class="column is-5 ml-4">
-                                <p><%= link_to b.book.title, b.book %></p>
-                            </div>
-                            <div class="column is-4">
-                                <p>Quantity: <%= b.quantity %></p>
-                            </div>
-                            <div class="column mr-4 has-text-right">
-                                <p><span class="has-text-right mr-5">Price:</span> <%= ActiveSupport::NumberHelper.number_to_currency(b.price) %></p>
-                            </div>
-                        </div>
-                        
-                    <% end %>
-                    
-                </div>
             </div>
-        
         <% end %>
     </div>
-    
 </div>
 
 
