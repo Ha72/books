@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     include Devise::Controllers::Helpers
 
     def index
-        @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+        @orders = current_customer.orders.order(created_at: :desc)
     end
 
     def show
@@ -23,15 +23,14 @@ class OrdersController < ApplicationController
         pst = subtotal * current_customer.province.pst / 100
         total = subtotal + gst + pst
 
-        order = Order.create(
-                    customer_id: current_customer.id,
+        order = current_customer.orders.create(
                     subtotal: subtotal,
                     gst: gst,
                     pst: pst,
                     total: total,
                     status: "Pending"
                 )
-        
+    
         cart.each do |c|
             if order&.valid?
                 order_book = OrderBook.create(

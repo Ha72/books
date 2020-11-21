@@ -5,7 +5,7 @@
                 <% if book.image.present? %>
                     <div>
                         <figure class="image">
-                            <%= image_tag book.image %>
+                            <%= image_tag book.image, alt: "#" %>
                         </figure> 
                     </div>
                 <% end %>
